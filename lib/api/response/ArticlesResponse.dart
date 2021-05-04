@@ -1,14 +1,16 @@
 
+import 'package:luobo_app/model/Article.dart';
+
 class ArticleResponse {
 
-  ArticleResponse();
+  final List<Article> articles;
 
-  ArticleResponse.fromJson(Map<String, dynamic> json) {
+  ArticleResponse({this.articles});
 
-  }
-
-  Map<String, dynamic> toJson() {
-    
+  factory ArticleResponse.fromJson(Map<String, dynamic> json) {
+    return ArticleResponse(
+      articles: json["data"],
+    );
   }
 
 }
