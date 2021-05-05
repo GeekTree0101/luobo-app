@@ -2,29 +2,25 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:luobo_app/views/FeedArticleView.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class FeedListView extends StatefulWidget {
-  @override
-  FeedListView({Key key}) : super(key: key);
+class FeedListAdapterView extends StatelessWidget {
 
-  @override
-  State<StatefulWidget> createState() => FeedListState();
-}
+  RefreshController refreshController;
+  Function() onLoading;
+  Function() onRefreshing;
+  bool Function() shouldBatch;
+  Function() onNext;
+  ListView child;
 
-class FeedListState extends State<FeedListView> {
-  RefreshController _refreshController;
-
-  @override
-  void initState() {
-    this._refreshController = RefreshController(
-      initialRefresh: false,
-      initialLoadStatus: LoadStatus.loading,
-      initialRefreshStatus: RefreshStatus.idle,
-    );
-    super.initState();
-  }
+  FeedListAdapterView({
+    this.refreshController,
+    this.onLoading,
+    this.onRefreshing,
+    this.shouldBatch,
+    this.onNext,
+    this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +29,7 @@ class FeedListState extends State<FeedListView> {
       _scrollable(
         _refreshable(
           context,
-          _list(context),
+          child,
         ),
       ),
     );
@@ -43,8 +39,10 @@ class FeedListState extends State<FeedListView> {
     return NotificationListener(
       child: child,
       onNotification: (notification) {
-        if (this._shouldBatch(notification)) {
-          // TODO: should batch
+        if (this._reachToBottom(notification)) {
+          if (this.shouldBatch()) {
+            this.onNext();
+          }
         }
       },
     );
@@ -52,7 +50,7 @@ class FeedListState extends State<FeedListView> {
 
   Widget _refreshable(BuildContext context, Widget child) {
     return SmartRefresher(
-      controller: this._refreshController,
+      controller: this.refreshController,
       enablePullDown: true,
       enablePullUp: false,
       header: ClassicHeader(
@@ -62,10 +60,10 @@ class FeedListState extends State<FeedListView> {
         refreshingText: "refreshing...",
       ),
       onLoading: () {
-        // TODO:
+        this.onLoading();
       },
       onRefresh: () {
-        // TODO:
+        this.onRefreshing();
       },
       child: child,
     );
@@ -79,17 +77,7 @@ class FeedListState extends State<FeedListView> {
     }
   }
 
-  Widget _list(BuildContext context) {
-    return ListView.builder(
-      itemCount: 0, // TODO : count
-      itemBuilder: (context, index) {
-        // TODO : tap
-        return FeedArticleView();
-      },
-    );
-  }
-
-  bool _shouldBatch(dynamic notification) {
+  bool _reachToBottom(dynamic notification) {
     if (notification is ScrollNotification) {
       final ScrollNotification scrollNotification = notification;
       return scrollNotification.metrics.pixels ==

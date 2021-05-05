@@ -13,6 +13,11 @@ class FeedArticleViewModel {
 }
 
 class FeedArticleView extends StatelessWidget {
+
+  FeedArticleViewModel viewModel;
+
+  FeedArticleView({this.viewModel});
+
   @override
   Widget build(BuildContext context) {
     return Container(
