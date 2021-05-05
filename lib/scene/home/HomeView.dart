@@ -21,9 +21,7 @@ class HomeState extends State<HomeView> {
   @override
   void initState() {
     _refreshController = RefreshController(
-      initialRefresh: false,
-      initialLoadStatus: LoadStatus.loading,
-      initialRefreshStatus: RefreshStatus.idle,
+      initialRefresh: true,
     );
     super.initState();
   }
@@ -83,6 +81,7 @@ class HomeState extends State<HomeView> {
           await homeModel.next();
         } catch(error) {
           // TODO: show error
+          print(error);
         }
       },
       shouldBatch: () {

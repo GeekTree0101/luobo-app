@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:luobo_app/api/request/ArticlesRequest.dart';
 import 'package:luobo_app/model/Article.dart';
 import 'package:luobo_app/repository/ArticleRepository.dart';
 import 'package:luobo_app/views/FeedArticleView.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class HomeModel extends ChangeNotifier {
   // public
@@ -27,7 +29,7 @@ class HomeModel extends ChangeNotifier {
     this._articles = res.articles;
     this.itemViewModels = res.articles.map((article) => FeedArticleViewModel(
           title: article.title,
-          description: article.createdAt.toString(),
+          description: timeago.format(article.createdAt),
           price: article.price,
         )).toList();
     this._hasNext = res.articles.isNotEmpty;
@@ -38,14 +40,14 @@ class HomeModel extends ChangeNotifier {
 
   Future<void> next() async {
     this.isLoading = true;
-
-    final req = new ArticlesRequest(nextID: this._articles.last.id);
+    final int lastID = this._articles.last.id;
+    final req = new ArticlesRequest(nextID: lastID);
     final res = await this._articleRepository.getArticles(req);
 
     this._articles += res.articles;
     this.itemViewModels += res.articles.map((article) => FeedArticleViewModel(
           title: article.title,
-          description: article.createdAt.toString(),
+          description: timeago.format(article.createdAt),
           price: article.price,
         )).toList();
     this._hasNext = res.articles.isNotEmpty;

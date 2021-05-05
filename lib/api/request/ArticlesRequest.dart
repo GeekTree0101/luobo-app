@@ -19,9 +19,9 @@ class ArticlesRequest implements NetworkRequest {
   @override
   Map<String, dynamic> parameters() {
 
-    if (nextID != null) {
+    if (this.nextID != null) {
       return {
-        "next_id": nextID,
+        "next_id": this.nextID.toString(),
       };
     } else {
       return {};

@@ -38,6 +38,7 @@ dependencies:
   fluttertoast: ^8.0.6
   flutter_swipe_action_cell: ^2.0.6
   jiffy: ^4.1.0
+  timeago: ^3.0.2
 
 dev_dependencies:
   flutter_test:
