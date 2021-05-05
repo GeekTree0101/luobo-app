@@ -1,19 +1,21 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-class NavigationBar extends StatelessWidget {
+class NavigationBar extends StatelessWidget with PreferredSizeWidget {
+  NavigationBar({this.title});
+
   final String title;
 
-  NavigationBar({this.title});
+  @override
+  Size get preferredSize => Size.fromHeight(44.0);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          _content(context),
-          _bottomLine(context)
-        ],
-      );
+      children: [_content(context), _bottomLine(context)],
+    );
   }
 
   Widget _content(BuildContext context) {

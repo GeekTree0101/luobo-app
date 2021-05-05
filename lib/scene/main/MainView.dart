@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:luobo_app/scene/home/HomeView.dart';
 
 class MainView extends StatefulWidget {
 
@@ -28,8 +29,7 @@ class MainState extends State<MainView> {
         bodyBuilder: (context, index) {
           switch (index) {
             case 0:
-              // TODO: Home
-              break;
+              return HomeView();
             default:
               break;
           }

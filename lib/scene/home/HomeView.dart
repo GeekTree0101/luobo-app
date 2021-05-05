@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:luobo_app/views/FeedListView.dart';
+import 'package:luobo_app/views/NavigationBar.dart';
 
 class HomeView extends StatefulWidget {
 
@@ -12,10 +14,16 @@ class HomeView extends StatefulWidget {
 
 class HomeState extends State<HomeView> {
 
-
   @override
   Widget build(BuildContext context) {
 
-    return Container();
+    return SafeArea(
+      child: Scaffold(
+        appBar: NavigationBar(
+          title: "郑州市",
+        ),
+        body: FeedListView(),
+      ),
+    );
   }
 }
