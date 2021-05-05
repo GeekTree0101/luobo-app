@@ -28,11 +28,25 @@ class FeedListState extends State<FeedListView> {
 
   @override
   Widget build(BuildContext context) {
-    return _scrollable(
-      _refreshable(
-        context,
-        _list(context),
+    return _batchable(
+      context,
+      _scrollable(
+        _refreshable(
+          context,
+          _list(context),
+        ),
       ),
+    );
+  }
+
+  Widget _batchable(BuildContext context, Widget child) {
+    return NotificationListener(
+      child: child,
+      onNotification: (notification) {
+        if (this._shouldBatch(notification)) {
+          // TODO: should batch
+        }
+      },
     );
   }
 
@@ -73,5 +87,15 @@ class FeedListState extends State<FeedListView> {
         return FeedArticleView();
       },
     );
+  }
+
+  bool _shouldBatch(dynamic notification) {
+    if (notification is ScrollNotification) {
+      final ScrollNotification scrollNotification = notification;
+      return scrollNotification.metrics.pixels ==
+          scrollNotification.metrics.maxScrollExtent;
+    }
+
+    return false;
   }
 }
