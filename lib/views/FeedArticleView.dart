@@ -6,7 +6,7 @@ class FeedArticleViewModel {
   final int price;
 
   String get displayPrice {
-    return price.toString() + "원";
+    return price.toString() + "¥";
   }
 
   FeedArticleViewModel({this.title, this.description, this.price});
