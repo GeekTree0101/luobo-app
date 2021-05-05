@@ -21,7 +21,7 @@ class FeedArticleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
+      child: Column(
         children: [
           _content(context),
           _bottomLine(context),
@@ -33,7 +33,7 @@ class FeedArticleView extends StatelessWidget {
   Widget _content(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16.0),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -49,16 +49,28 @@ class FeedArticleView extends StatelessWidget {
     return SizedBox(
       height: 0.5,
       child: Container(
-        color: Colors.grey[100],
-      ),
+        color: Colors.grey[300],
+      )
     );
   }
 
   Widget _articleInfo(BuildContext context) {
-    return Row(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "todo title",
+          viewModel.title,
+          style: TextStyle(
+            color: Colors.grey[900],
+            fontSize: 18.0,
+          ),
+        ),
+        SizedBox(
+          height: 4.0,
+        ),
+        Text(
+          viewModel.description,
           style: TextStyle(
             color: Colors.grey[700],
             fontSize: 14.0,
@@ -68,17 +80,7 @@ class FeedArticleView extends StatelessWidget {
           height: 8.0,
         ),
         Text(
-          "todo content",
-          style: TextStyle(
-            color: Colors.grey[900],
-            fontSize: 18.0,
-          ),
-        ),
-        SizedBox(
-          height: 16.0,
-        ),
-        Text(
-          "todo price",
+          viewModel.displayPrice,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey[900],
