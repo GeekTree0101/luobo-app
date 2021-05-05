@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FeedArticleViewModel {
   final String title;
   final String description;
-  final double price;
+  final int price;
 
   String get displayPrice {
     return price.toString() + "원";

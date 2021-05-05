@@ -22,7 +22,7 @@ class ArticleRepository implements ArticleRepositoryLogic {
 
     return this._networking.fetch(req).then((res) {
       final dynamic jsonBody = jsonDecode(res.body);
-      return jsonBody.map((json) => ArticleResponse.fromJson(json));
+      return ArticleResponse.fromJson(jsonBody);
     });
   }
 }

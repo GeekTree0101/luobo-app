@@ -1,15 +1,15 @@
 
 class NetworkingSupplier {
 
-  bool _isDebugMode;
+  bool isDebugMode;
 
   NetworkingSupplier(bool isDebugMode) {
-    this._isDebugMode = isDebugMode;
+    this.isDebugMode = isDebugMode;
   }
 
   String host() {
 
-    return "localhost:8000";
+    return "127.0.0.1:8000";
   }
   
 }

@@ -8,8 +8,11 @@ class ArticleResponse {
   ArticleResponse({this.articles});
 
   factory ArticleResponse.fromJson(Map<String, dynamic> json) {
+
+    List<dynamic> rawArticles = json["data"];
+
     return ArticleResponse(
-      articles: json["data"],
+      articles: rawArticles.map((e) => Article.fromJson(e)).toList(),
     );
   }
 

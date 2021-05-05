@@ -37,16 +37,14 @@ abstract class NetworkingLogic {
 }
 
 class Networking implements NetworkingLogic {
-
   NetworkingSupplier _supplier;
-  
+
   Networking(NetworkingSupplier supplier) {
     this._supplier = supplier;
   }
 
   Map<String, String> headers = {
     "Content-Type": "application/json",
-    // "Authorization": "token TODO_TOKEN", 
   };
 
   Future<http.Response> fetch(NetworkRequest req) async {
@@ -54,14 +52,24 @@ class Networking implements NetworkingLogic {
 
     switch (req.encodingType) {
       case EncodingType.QueryString:
-        url = Uri.https(_supplier.host(), req.path, req.parameters());
+        if (this._supplier.isDebugMode) {
+          url = Uri.http(_supplier.host(), req.path, req.parameters());
+        } else {
+          url = Uri.https(_supplier.host(), req.path, req.parameters());
+        }
         break;
       case EncodingType.Body:
-        url = Uri.https(_supplier.host(), req.path);
+        if (this._supplier.isDebugMode) {
+          url = Uri.http(_supplier.host(), req.path);
+        } else {
+          url = Uri.https(_supplier.host(), req.path);
+        }
         break;
       default:
         throw UnsupportedError("undefined encoding type");
     }
+
+    print(url);
 
     Future<http.Response> response;
 

@@ -29,7 +29,7 @@ class HomeModel extends ChangeNotifier {
           title: article.title,
           description: article.createdAt.toString(),
           price: article.price,
-        ));
+        )).toList();
     this._hasNext = res.articles.isNotEmpty;
 
     this.isLoading = false;
@@ -47,7 +47,7 @@ class HomeModel extends ChangeNotifier {
           title: article.title,
           description: article.createdAt.toString(),
           price: article.price,
-        ));
+        )).toList();
     this._hasNext = res.articles.isNotEmpty;
 
     this.isLoading = false;
