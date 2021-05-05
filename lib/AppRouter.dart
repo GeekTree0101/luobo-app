@@ -14,10 +14,7 @@ class AppRouter {
 
   Map<String, Widget Function(BuildContext)> routes() {
     return {
-      "/": (context) => MultiProvider(
-            providers: [],
-            builder: (context, child) => new MainView(),
-          )
+      "/": (context) => new MainView()
     };
   }
 }
