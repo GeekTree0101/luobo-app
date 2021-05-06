@@ -4,16 +4,15 @@ class FeedArticleViewModel {
   final String title;
   final String description;
   final int price;
-
+  final String imageURL;
   String get displayPrice {
-    return price.toString() + "¥";
+    return "¥" + price.toString();
   }
 
-  FeedArticleViewModel({this.title, this.description, this.price});
+  FeedArticleViewModel({this.title, this.description, this.price, this.imageURL});
 }
 
 class FeedArticleView extends StatelessWidget {
-
   FeedArticleViewModel viewModel;
 
   FeedArticleView({this.viewModel});
@@ -39,7 +38,9 @@ class FeedArticleView extends StatelessWidget {
         children: [
           _thumnailImage(context),
           SizedBox(width: 16.0),
-          _articleInfo(context),
+          Flexible(
+            child: _articleInfo(context),
+          ),
         ],
       ),
     );
@@ -47,11 +48,10 @@ class FeedArticleView extends StatelessWidget {
 
   Widget _bottomLine(BuildContext context) {
     return SizedBox(
-      height: 0.5,
-      child: Container(
-        color: Colors.grey[300],
-      )
-    );
+        height: 0.5,
+        child: Container(
+          color: Colors.grey[300],
+        ));
   }
 
   Widget _articleInfo(BuildContext context) {
@@ -61,9 +61,10 @@ class FeedArticleView extends StatelessWidget {
       children: [
         Text(
           viewModel.title,
+          maxLines: 1,
           style: TextStyle(
             color: Colors.grey[900],
-            fontSize: 18.0,
+            fontSize: 16.0,
           ),
         ),
         SizedBox(
@@ -73,18 +74,18 @@ class FeedArticleView extends StatelessWidget {
           viewModel.description,
           style: TextStyle(
             color: Colors.grey[700],
-            fontSize: 14.0,
+            fontSize: 12.0,
           ),
         ),
         SizedBox(
-          height: 8.0,
+          height: 6.0,
         ),
         Text(
           viewModel.displayPrice,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey[900],
-            fontSize: 18.0,
+            fontSize: 16.0,
           ),
         )
       ],
@@ -93,11 +94,21 @@ class FeedArticleView extends StatelessWidget {
 
   Widget _thumnailImage(BuildContext context) {
     return Container(
-      width: 80.0,
-      height: 80.0,
+      width: 108.0,
+      height: 108.0,
       decoration: BoxDecoration(
+          image: _networkImage(),
           color: Colors.grey[400],
           borderRadius: BorderRadius.all(Radius.circular(8.0))),
     );
+  }
+  
+  DecorationImage _networkImage() {
+
+    if (this.viewModel.imageURL == null) {
+      return null;
+    }
+
+    return DecorationImage(image: NetworkImage(this.viewModel.imageURL ?? ""));
   }
 }

@@ -8,6 +8,7 @@ class Article {
   final DateTime createdAt;
   final DateTime updatedAt;
   final int categoryID;
+  final String imageURL;
 
   Article({
     this.id,
@@ -17,6 +18,7 @@ class Article {
     this.createdAt,
     this.updatedAt,
     this.categoryID,
+    this.imageURL,
   });
 
   factory Article.fromJson(Map<String, dynamic> json) {
@@ -27,7 +29,8 @@ class Article {
       price: json["price"],
       createdAt: DateTime.parse(json["created_at"]),
       updatedAt: DateTime.parse(json["updated_at"]),
-      categoryID: json["category_id"]
+      categoryID: json["category_id"],
+      imageURL: json["image_url"],
     );
   }
 
@@ -40,6 +43,7 @@ class Article {
       "created_at": createdAt.toIso8601String(),
       "updated_at": updatedAt.toIso8601String(),
       "category_id": categoryID,
+      "image_url": imageURL,
     };
   }
 }

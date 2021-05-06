@@ -13,7 +13,7 @@ class MainView extends StatefulWidget {
 
 class MainState extends State<MainView> {
   final Color activeColor = Colors.grey[900];
-  final Color inactiveColor = Colors.grey[500];
+  final Color inactiveColor = Colors.grey[900];
   final double iconSize = 24.0;
 
   @override

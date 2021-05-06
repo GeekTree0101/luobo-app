@@ -31,6 +31,7 @@ class HomeModel extends ChangeNotifier {
           title: article.title,
           description: timeago.format(article.createdAt),
           price: article.price,
+          imageURL: article.imageURL,
         )).toList();
     this._hasNext = res.articles.isNotEmpty;
 
@@ -49,6 +50,7 @@ class HomeModel extends ChangeNotifier {
           title: article.title,
           description: timeago.format(article.createdAt),
           price: article.price,
+          imageURL: article.imageURL,
         )).toList();
     this._hasNext = res.articles.isNotEmpty;
 
