@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:luobo_app/views/NavigationBarButtonItem.dart';
 
 class RegionControlNavigationBar extends StatelessWidget with PreferredSizeWidget {
-  
+
   RegionControlNavigationBar({this.title, this.barButtonItems});
 
   final String title;
@@ -23,7 +23,7 @@ class RegionControlNavigationBar extends StatelessWidget with PreferredSizeWidge
 
   Widget _content(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10.0, left: 16.0, bottom: 0.0, right: 16.0),
+      padding: EdgeInsets.only(top: 10.0, left: 16.0, bottom: 10.0, right: 16.0),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,10 +71,11 @@ class RegionControlNavigationBar extends StatelessWidget with PreferredSizeWidge
   }
 
   Widget _rightButtonItemsContainer(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: this.barButtonItems,
+    return Wrap(
+      alignment: WrapAlignment.end,
+      spacing: 12.0,
+      runSpacing: 12.0,
+      children: this.barButtonItems ?? [],
     );
   }
 }

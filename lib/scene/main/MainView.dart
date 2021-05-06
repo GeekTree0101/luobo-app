@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:luobo_app/scene/category/CategoryView.dart';
+import 'package:luobo_app/scene/chat/ChatView.dart';
 import 'package:luobo_app/scene/home/HomeView.dart';
+import 'package:luobo_app/scene/myluobo/MyLuoboView.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -26,6 +28,10 @@ class MainState extends State<MainView> {
             return HomeView();
           case 1:
             return CategoryView();
+          case 2:
+            return ChatView();
+          case 3:
+            return MyLuoboView();
           default:
             break;
         }
