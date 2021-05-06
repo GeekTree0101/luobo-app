@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:luobo_app/views/NavigationBarButtonItem.dart';
 
-class NavigationBar extends StatelessWidget with PreferredSizeWidget {
-  NavigationBar({this.title, this.barButtonItems});
+class RegionControlNavigationBar extends StatelessWidget with PreferredSizeWidget {
+  
+  RegionControlNavigationBar({this.title, this.barButtonItems});
 
   final String title;
   List<NavigationBarButtonItem> barButtonItems;
@@ -45,13 +46,27 @@ class NavigationBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   Widget _title(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.grey[900],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[900],
+          ),
+        ),
+        SizedBox(
+          width: 4.0,
+        ),
+        Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: Colors.grey[900],
+          size: 18.0,
+        ),
+      ],
     );
   }
 

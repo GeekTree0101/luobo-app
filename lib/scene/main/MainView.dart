@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:luobo_app/scene/category/CategoryView.dart';
 import 'package:luobo_app/scene/home/HomeView.dart';
 
 class MainView extends StatefulWidget {
@@ -23,6 +24,8 @@ class MainState extends State<MainView> {
         switch (index) {
           case 0:
             return HomeView();
+          case 1:
+            return CategoryView();
           default:
             break;
         }

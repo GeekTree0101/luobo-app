@@ -5,6 +5,7 @@ import 'package:luobo_app/views/FeedArticleView.dart';
 import 'package:luobo_app/views/FeedListAdapterView.dart';
 import 'package:luobo_app/views/NavigationBar.dart';
 import 'package:luobo_app/views/NavigationBarButtonItem.dart';
+import 'package:luobo_app/views/RegionControlNavigationBar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,7 @@ class HomeState extends State<HomeView> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: NavigationBar(
+        appBar: RegionControlNavigationBar(
           title: "郑州市",
           barButtonItems: [
             NavigationBarButtonItem(
