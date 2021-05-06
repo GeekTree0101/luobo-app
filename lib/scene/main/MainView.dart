@@ -62,7 +62,7 @@ class MainState extends State<MainView> {
           color: activeColor,
           size: iconSize,
         ),
-        label: "Home",
+        label: "首页",
       ),
       BottomNavigationBarItem(
           icon: Icon(
@@ -75,7 +75,7 @@ class MainState extends State<MainView> {
             color: activeColor,
             size: iconSize,
           ),
-          label: "Categories"),
+          label: "分类"),
       BottomNavigationBarItem(
           icon: Icon(
             Ionicons.chatbubbles_outline,
@@ -87,7 +87,7 @@ class MainState extends State<MainView> {
             color: activeColor,
             size: iconSize,
           ),
-          label: "Chats"),
+          label: "消息"),
       BottomNavigationBarItem(
           icon: Icon(
             Ionicons.person_outline,
@@ -99,7 +99,7 @@ class MainState extends State<MainView> {
             color: activeColor,
             size: iconSize,
           ),
-          label: "My Luobo")
+          label: "我的萝卜")
     ];
   }
 }

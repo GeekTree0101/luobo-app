@@ -35,7 +35,7 @@ class CategoryState extends State<CategoryView> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: NavigationBar(
-          title: "类别",
+          title: "分类",
           barButtonItems: [
             NavigationBarButtonItem(
               icon: Icons.search,

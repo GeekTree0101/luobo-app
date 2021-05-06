@@ -11,10 +11,17 @@ class CategoryItemViewModel {
 }
 
 class CategoryItemView extends StatelessWidget {
-
-  List _placeholderColors = [Colors.red[400], Colors.orange[600], Colors.green[600]];
+  List _placeholderColors = [
+    Colors.red[400],
+    Colors.orange[600],
+    Colors.green[600],
+    Colors.blue[600],
+    Colors.grey[600],
+    Colors.purple[600],
+    Colors.pink[800],
+  ];
   Random _random = new Random();
-  
+
   final CategoryItemViewModel viewModel;
 
   CategoryItemView({this.viewModel});
@@ -46,27 +53,27 @@ class CategoryItemView extends StatelessWidget {
   Widget _thumnailImage(BuildContext context) {
     if (this.viewModel.imageURL == null) {
       return Container(
-        width: 36.0,
-        height: 36.0,
+        width: 32.0,
+        height: 32.0,
         child: Center(
           child: Text(
             viewModel.title.characters.first.toUpperCase(),
             style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            ),
+                fontSize: 16.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
         ),
         decoration: BoxDecoration(
-            color: _placeholderColors[_random.nextInt(_placeholderColors.length)],
+            color:
+                _placeholderColors[_random.nextInt(_placeholderColors.length)],
             borderRadius: BorderRadius.all(Radius.circular(8.0))),
       );
     }
 
     return Container(
-      width: 36.0,
-      height: 36.0,
+      width: 32.0,
+      height: 32.0,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: NetworkImage(this.viewModel.imageURL ?? "")),
