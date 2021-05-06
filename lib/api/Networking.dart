@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:luobo_app/api/NetworkingSupplier.dart';
 
-import 'NetworkingSupplier.dart';
 
 enum NetworkMethod { GET, PUT, POST, DELETE }
 

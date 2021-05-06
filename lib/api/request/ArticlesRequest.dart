@@ -1,5 +1,5 @@
 
-import 'package:luobo_app/api/networking.dart';
+import 'package:luobo_app/api/Networking.dart';
 
 class ArticlesRequest implements NetworkRequest {
 

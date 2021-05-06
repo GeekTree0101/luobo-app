@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:luobo_app/api/networking.dart';
+import 'package:luobo_app/api/Networking.dart';
 import 'package:luobo_app/api/request/ArticlesRequest.dart';
 import 'package:luobo_app/api/response/ArticlesResponse.dart';
 
