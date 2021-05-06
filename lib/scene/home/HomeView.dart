@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:luobo_app/scene/home/HomeModel.dart';
 import 'package:luobo_app/views/FeedArticleView.dart';
 import 'package:luobo_app/views/FeedListAdapterView.dart';
@@ -54,7 +55,57 @@ class HomeState extends State<HomeView> {
   }
 
   Widget _body(BuildContext context) {
+    return Stack(
+      children: [
+        _feedList(context),
+        _floatingActionButton(context),
+      ],
+    );
+  }
 
+  Widget _floatingActionButton(BuildContext context) {
+    return Positioned(
+      bottom: 12.0,
+      right: 12.0,
+      child: Container(
+        child: PlatformButton(
+          padding: EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.add,
+                size: 32.0,
+                color: Colors.white,
+              ),
+              SizedBox(width: 4.0),
+              Text(
+                "写作",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
+        ),
+        decoration: BoxDecoration(
+          color: Colors.orange[700],
+          borderRadius: BorderRadius.circular(40.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(20),
+              spreadRadius: 2.0,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _feedList(BuildContext context) {
     final homeModel = context.watch<HomeModel>();
 
     return FeedListAdapterView(
@@ -63,7 +114,7 @@ class HomeState extends State<HomeView> {
         try {
           await homeModel.reload();
           this._refreshController.loadComplete();
-        } catch(error) {
+        } catch (error) {
           this._refreshController.loadFailed();
         }
       },
@@ -71,7 +122,7 @@ class HomeState extends State<HomeView> {
         try {
           await homeModel.reload();
           this._refreshController.refreshCompleted();
-        } catch(error) {
+        } catch (error) {
           this._refreshController.refreshFailed();
           print(error);
         }
@@ -79,7 +130,7 @@ class HomeState extends State<HomeView> {
       onNext: () async {
         try {
           await homeModel.next();
-        } catch(error) {
+        } catch (error) {
           // TODO: show error
           print(error);
         }

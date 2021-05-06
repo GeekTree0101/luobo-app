@@ -33,11 +33,13 @@ class MainState extends State<MainView> {
         initialIndex: 0,
       ),
       materialTabs: (context, platform) => MaterialNavBarData(
+        backgroundColor: Colors.white,
         items: _bottomItems(context),
         selectedItemColor: activeColor,
         unselectedItemColor: inactiveColor,
       ),
       cupertinoTabs: (context, platform) => CupertinoTabBarData(
+          backgroundColor: Colors.white,
           items: _bottomItems(context),
           activeColor: activeColor,
           inactiveColor: inactiveColor),
