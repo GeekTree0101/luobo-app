@@ -1,13 +1,31 @@
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:luobo_app/model/Category.dart';
 
+@jsonSerializable
 class Article {
+
+  @JsonProperty(name: "id")
   final int id;
+
+  @JsonProperty(name: "title")
   final String title;
+
+  @JsonProperty(name: "content")
   final String content;
+
+  @JsonProperty(name: "price")
   final int price;
+
+  @JsonProperty(name: "created_at", converterParams: { "format" : "yyyy-MM-dd'T'hh:mm:ssz" })
   final DateTime createdAt;
+
+  @JsonProperty(name: "updated_at", converterParams: { "format" : "yyyy-MM-dd'T'hh:mm:ssz" })
   final DateTime updatedAt;
+  
+  @JsonProperty(name: "category_id")
   final int categoryID;
+
+  @JsonProperty(name: "image_url")
   final String imageURL;
 
   Article({
@@ -20,30 +38,4 @@ class Article {
     this.categoryID,
     this.imageURL,
   });
-
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
-      id: json["id"],
-      title: json["title"],
-      content: json["content"],
-      price: json["price"],
-      createdAt: DateTime.parse(json["created_at"]),
-      updatedAt: DateTime.parse(json["updated_at"]),
-      categoryID: json["category_id"],
-      imageURL: json["image_url"],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "title": title,
-      "content": content,
-      "price": price,
-      "created_at": createdAt.toIso8601String(),
-      "updated_at": updatedAt.toIso8601String(),
-      "category_id": categoryID,
-      "image_url": imageURL,
-    };
-  }
 }

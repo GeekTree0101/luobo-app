@@ -1,19 +1,12 @@
 
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:luobo_app/model/Article.dart';
 
+@jsonSerializable
 class ArticleResponse {
 
+  @JsonProperty(name: "data")
   final List<Article> articles;
 
   ArticleResponse({this.articles});
-
-  factory ArticleResponse.fromJson(Map<String, dynamic> json) {
-
-    List<dynamic> rawArticles = json["data"];
-
-    return ArticleResponse(
-      articles: rawArticles.map((e) => Article.fromJson(e)).toList(),
-    );
-  }
-
 }
