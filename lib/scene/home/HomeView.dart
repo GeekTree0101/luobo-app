@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:luobo_app/scene/home/HomeModel.dart';
+import 'package:luobo_app/views/FABView.dart';
 import 'package:luobo_app/views/FeedArticleView.dart';
 import 'package:luobo_app/views/FeedListAdapterView.dart';
-import 'package:luobo_app/views/NavigationBar.dart';
 import 'package:luobo_app/views/NavigationBarButtonItem.dart';
 import 'package:luobo_app/views/RegionControlNavigationBar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -18,6 +17,7 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeState extends State<HomeView> {
+
   RefreshController _refreshController;
 
   @override
@@ -68,41 +68,7 @@ class HomeState extends State<HomeView> {
     return Positioned(
       bottom: 12.0,
       right: 12.0,
-      child: Container(
-        child: PlatformButton(
-          padding: EdgeInsets.all(12.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.add,
-                size: 32.0,
-                color: Colors.white,
-              ),
-              SizedBox(width: 4.0),
-              Text(
-                "写作",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          ),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.orange[700],
-          borderRadius: BorderRadius.circular(40.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withAlpha(20),
-              spreadRadius: 2.0,
-            ),
-          ],
-        ),
-      ),
+      child: FABView(name: "写作"),
     );
   }
 
