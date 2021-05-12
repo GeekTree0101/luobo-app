@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:luobo_app/api/Networking.dart';
 import 'package:luobo_app/api/request/ArticlesRequest.dart';
 import 'package:luobo_app/api/response/ArticlesResponse.dart';
@@ -21,8 +22,7 @@ class ArticleRepository implements ArticleRepositoryLogic {
   Future<ArticleResponse> getArticles(ArticlesRequest req) {
 
     return this._networking.fetch(req).then((res) {
-      final dynamic jsonBody = jsonDecode(res.body);
-      return ArticleResponse.fromJson(jsonBody);
+      return JsonMapper.fromMap<ArticleResponse>(jsonDecode(res.body));
     });
   }
 }

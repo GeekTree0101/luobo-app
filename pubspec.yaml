@@ -39,8 +39,10 @@ dependencies:
   flutter_swipe_action_cell: ^2.0.6
   jiffy: ^4.1.0
   timeago: ^3.0.2
+  dart_json_mapper: ^2.0.9
 
 dev_dependencies:
+  build_runner: ^1.12.2
   flutter_test:
     sdk: flutter
 

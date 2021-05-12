@@ -1,23 +1,16 @@
+import 'package:dart_json_mapper/dart_json_mapper.dart';
+
+@jsonSerializable
 class Category {
+
+  @JsonProperty(name: "id")
   final int id;
+
+  @JsonProperty(name: "name")
   final String name;
+
+  @JsonProperty(name: "image_url")
   final String imageURL;
 
   Category({this.id, this.name, this.imageURL});
-
-  factory Category.fromJson(Map<String, dynamic> json) {
-    return new Category(
-      id: json["id"],
-      name: json["name"],
-      imageURL: json["image_url"],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "name": name,
-      "image_url": imageURL,
-    };
-  }
 }
